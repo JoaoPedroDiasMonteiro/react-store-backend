@@ -9,7 +9,9 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        Product::query()->insert($this->products());
+        Product::query()->insert([
+            ...$this->products(),
+        ]);
     }
 
     public function products(): array
@@ -74,6 +76,90 @@ class ProductSeeder extends Seeder
                 'description' => 'Iced tea shaken with flavors and lemonade over ice for a refreshing lift.',
                 'price' => 3.20,
                 'image' => 'https://images.pexels.com/photos/792613/pexels-photo-792613.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Chocolate Cupcake',
+                'description' => 'Decadent chocolate cupcake topped with creamy chocolate frosting.',
+                'price' => 2.5,
+                'image' => 'https://images.pexels.com/photos/15172852/pexels-photo-15172852/free-photo-of-chocolate-cupcake-with-whipped-cream-and-a-strawberry.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Vanilla Cupcake',
+                'description' => 'Moist vanilla cupcake with fluffy vanilla buttercream frosting.',
+                'price' => 2.2,
+                'image' => 'https://images.pexels.com/photos/4109784/pexels-photo-4109784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Red Velvet Cupcake',
+                'description' => 'Classic red velvet cupcake with smooth cream cheese frosting.',
+                'price' => 2.8,
+                'image' => 'https://images.pexels.com/photos/10319189/pexels-photo-10319189.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Strawberry Cupcake',
+                'description' => 'Delicious strawberry cupcake topped with fresh strawberry icing.',
+                'price' => 3.0,
+                'image' => 'https://images.pexels.com/photos/4109787/pexels-photo-4109787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Croissant',
+                'description' => 'Buttery and flaky pastry, perfect for breakfast or a snack.',
+                'price' => 2.0,
+                'image' => 'https://images.pexels.com/photos/3892469/pexels-photo-3892469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Bagel',
+                'description' => 'Soft and chewy bagel, toasted to perfection and served with cream cheese.',
+                'price' => 2.5,
+                'image' => 'https://images.pexels.com/photos/263116/pexels-photo-263116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Muffin',
+                'description' => 'Moist and flavorful muffin, available in various flavors like blueberry or banana nut.',
+                'price' => 2.2,
+                'image' => 'https://images.pexels.com/photos/1657343/pexels-photo-1657343.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Sandwich',
+                'description' => 'Freshly made sandwich with premium ingredients such as turkey, ham, or vegetables.',
+                'price' => 5.0,
+                'image' => 'https://images.pexels.com/photos/1647163/pexels-photo-1647163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Salad',
+                'description' => 'Healthy and delicious salad with fresh greens, vegetables, and your choice of dressing.',
+                'price' => 6.5,
+                'image' => 'https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Quiche',
+                'description' => 'Savory quiche filled with eggs, cheese, and your choice of fillings such as spinach, bacon, or mushrooms.',
+                'price' => 4.5,
+                'image' => 'https://images.pexels.com/photos/5852260/pexels-photo-5852260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Cookie',
+                'description' => 'Soft and chewy cookie, available in classic flavors like chocolate chip or oatmeal raisin.',
+                'price' => 1.5,
+                'image' => 'https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Cake Slice',
+                'description' => 'Indulgent cake slice with layers of moist cake and creamy frosting, perfect for satisfying your sweet tooth.',
+                'price' => 4.0,
+                'image' => 'https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Yogurt Parfait',
+                'description' => 'Creamy yogurt layered with granola and fresh fruit for a wholesome and delicious treat.',
+                'price' => 3.5,
+                'image' => 'https://images.pexels.com/photos/4696279/pexels-photo-4696279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+            ],
+            [
+                'name' => 'Brownie',
+                'description' => 'Rich and fudgy brownie, loaded with chocolate goodness and topped with nuts or frosting.',
+                'price' => 2.8,
+                'image' => 'https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
             ],
         ];
     }
