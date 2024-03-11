@@ -20,5 +20,5 @@ Route::middleware(['auth:sanctum'])->group(function() {
         return $request->user();
     });
 
-    Route::resource('products', ProductController::class);
+    Route::apiResource('products', ProductController::class);
 });
