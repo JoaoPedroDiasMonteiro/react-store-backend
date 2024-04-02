@@ -4,14 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductController extends Controller
 {
-    public function index(): AnonymousResourceCollection
+    public function index(Request $request): AnonymousResourceCollection
     {
-        $products = Product::query()->paginate(4);
+        $limit = $request->get('limit', 10);
+        $inRandomOrder = $request->get('randomOrder');
+        $relationships = explode(',', $request->get('with', ''));
+
+        $products = Product::query()
+            ->when(in_array('category', $relationships), fn (Builder $query) => $query->with('category'))
+            ->when($inRandomOrder, fn (Builder $query) => $query->inRandomOrder())
+            ->paginate($limit);
 
         return ProductResource::collection($products);
     }
