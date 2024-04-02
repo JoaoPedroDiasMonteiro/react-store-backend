@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'team@devsquad.com',
         ]);
 
+        $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
     }
 }
