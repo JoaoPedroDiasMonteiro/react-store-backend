@@ -2,26 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ProductResource;
-use App\Models\Product;
+use App\Http\Requests\IndexRequest;
+use App\Http\Resources\CategoryResource;
+use App\Models\Category;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
-    public function index(Request $request): AnonymousResourceCollection
+    public function index(IndexRequest $request): AnonymousResourceCollection
     {
         $limit = $request->get('limit', 10);
         $inRandomOrder = $request->get('randomOrder');
-        $relationships = explode(',', $request->get('with', ''));
 
-        $products = Product::query()
-            ->when(in_array('category', $relationships), fn (Builder $query) => $query->with('category'))
+        $categories = Category::query()
             ->when($inRandomOrder, fn (Builder $query) => $query->inRandomOrder())
             ->paginate($limit);
 
-        return ProductResource::collection($products);
+        return CategoryResource::collection($categories);
     }
 
     /**
@@ -32,17 +31,18 @@ class ProductController extends Controller
         //
     }
 
-    public function show(Product $product): ProductResource
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        return new ProductResource(
-            $product->loadMissing('category')
-        );
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -50,7 +50,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(string $id)
     {
         //
     }
